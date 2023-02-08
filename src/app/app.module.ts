@@ -1,19 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudentsListComponent } from './components/students-list/students-list.component';
 import { AddStudentComponent } from './components/add-student/add-student.component';
-import { EditStudentComponent } from './components/edit-student/edit-student.component';
+import { EditStudentDialogComponent } from './components/edit-student-dialog/edit-student-dialog.component';
 import { DeleteStudentComponent } from './components/delete-student/delete-student.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
-import {MatButtonModule } from  '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from  '@angular/material/button';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
+import { routes } from '../app/app-routing-module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,7 @@ import {MatButtonModule } from  '@angular/material/button';
     NavbarComponent,
     StudentsListComponent,
     AddStudentComponent,
-    EditStudentComponent,
+    EditStudentDialogComponent,
     DeleteStudentComponent
   ],
   imports: [
@@ -32,9 +37,17 @@ import {MatButtonModule } from  '@angular/material/button';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule,
+    MatTableModule,
+    RouterModule,
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

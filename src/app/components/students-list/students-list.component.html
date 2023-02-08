@@ -1,5 +1,38 @@
-<!-- <ul>
-    <li *ngFor="let estudiante of studentsList">
-        {{ estudiante.nombre }}
-    </li>
-</ul> -->
+<div>
+    <table mat-table [dataSource]="dataSource">    
+        <ng-container matColumnDef="nameAndSurname">
+            <th mat-header-cell *matHeaderCellDef>Name and Surname</th>
+            <td mat-cell *matCellDef="let element">{{ element.nameAndSurname }}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="documentNumber">
+            <th mat-header-cell *matHeaderCellDef>Document Number</th>
+            <td mat-cell *matCellDef="let element">{{ element.documentNumber }}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="phoneNumber">
+            <th mat-header-cell *matHeaderCellDef>Phone Number</th>
+            <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
+        </ng-container> 
+        
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button style="background-color: rgb(82, 7, 7)" (click)="openModal(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button style="background-color: rgb(82, 7, 7)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+    </table>
+</div>

@@ -1,21 +1,14 @@
 <mat-sidenav-container>
-    <mat-sidenav mode="side" opened #sidenav>
-      <mat-nav-list>
-  
-        <a mat-list-item > Accounts </a>
-        <a mat-list-item > Create Account </a>
-        <a mat-list-item > Contacts </a>
-        <a mat-list-item > Create Contact </a>
-        <a mat-list-item > Activities </a>
-        <a mat-list-item > Create Activity </a>
-        <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-  
+    <mat-sidenav mode="side" opened #sidenav style="background-color: rgb(82, 7, 7)">
+      <mat-nav-list>  
+        <a routerLink="" mat-list-item>students list (homepage)</a>
+        <a routerLink="add-student" mat-list-item>add student</a>
+        <!-- <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>   -->
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <div style="height: 88vh;">
-  
-        <!-- <router-outlet></router-outlet> -->
+      <div style="height: 88vh;">  
+        <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from '/Users/Leo/source/repos/1PF-Apollonio/src/app/services/student.service';
+import { StudentService } from '../../services/student.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { Student } from 'src/app/models/student.model';
+import { EditStudentDialogComponent } from '../edit-student-dialog/edit-student-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-students-list',
@@ -7,13 +11,22 @@ import { StudentService } from '/Users/Leo/source/repos/1PF-Apollonio/src/app/se
   styleUrls: ['./students-list.component.css']
 })
 export class StudentsListComponent implements OnInit {
-  constructor(private postsService: StudentService) {}
+  students!: Student[];
+  dataSource!: MatTableDataSource<Student>;
+  columnas: string[] = ['nameAndSurname', 'email', 'documentNumber', 'phoneNumber', 'actions']
+
+  constructor(private postsService: StudentService, private dialog: MatDialog) {}
 
   ngOnInit() {
-    // subscribe to the Observable to make the HTTP call
-    this.postsService.getStudents().subscribe((posts) => {
-      // we received our posts!
-      console.log(posts);
+    this.postsService.getStudents().subscribe((students) => {
+      this.students = students;
+      this.dataSource = new MatTableDataSource<Student>(this.students);
+    });
+  }
+
+  openModal(student: Student){
+    const dialogRef = this.dialog.open(EditStudentDialogComponent, {
+      data: student
     });
   }
 }

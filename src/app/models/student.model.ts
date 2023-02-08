@@ -5,6 +5,6 @@ export interface Student {
     email: string,
     documentNumber: number,
     isActive: boolean,
-    phone: number
+    phoneNumber: number
     // enrolledCourses: Array<Course>
 }
