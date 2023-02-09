@@ -1,1 +1,54 @@
-<p>add-student works!</p>
+<form [formGroup]="addStudentForm" (ngSubmit)="registerStudent()" class="was-validated">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input formControlName="name" type="string" class="form-control" id="name">
+        <div class="valido" *ngIf="addStudentForm.controls['name'].dirty && addStudentForm.controls['name'].valid">Campo correcto</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['name'].dirty && addStudentForm.controls['name'].errors?.['required']">The "name" field can't be empty</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['name'].dirty && addStudentForm.controls['name'].errors?.['minlength']">The "name" field can't have less than 3 letters</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['name'].dirty && addStudentForm.controls['name'].errors?.['pattern']">The "name" field must have only letters and spaces</div>
+    </div>
+    <div class="mb-3">
+        <label for="surname" class="form-label">Surname</label>
+        <input formControlName="surname" type="string" class="form-control" id="surname">
+        <div class="valido" *ngIf="addStudentForm.controls['surname'].dirty && addStudentForm.controls['surname'].valid">Campo correcto</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['surname'].dirty && addStudentForm.controls['surname'].errors?.['required']">The "surname" field can't be empty</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['surname'].dirty && addStudentForm.controls['surname'].errors?.['minlength']">The "surname" field can't have less than 3 letters</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['surname'].dirty && addStudentForm.controls['surname'].errors?.['pattern']">The "surname" field must have only letters and spaces</div>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+        <div class="valido" *ngIf="addStudentForm.controls['email'].dirty && addStudentForm.controls['email'].valid"
+        >Valid email</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['email'].dirty && addStudentForm.controls['email'].errors?.['required']">The email field can't be empty</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['email'].dirty && addStudentForm.controls['email'].errors?.['pattern']">The email field has an incorect format</div>
+    </div>
+    <div class="mb-3">
+        <label for="documentNumber" class="form-label">Document Number</label>
+        <input formControlName="documentNumber" type="string" class="form-control" id="documentNumber" aria-describedby="emailHelp">
+        <div class="valido" *ngIf="addStudentForm.controls['documentNumber'].dirty && addStudentForm.controls['documentNumber'].valid"
+        >Valid document</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['documentNumber'].dirty && addStudentForm.controls['documentNumber'].errors?.['required']">The "document" field can't be empty</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['documentNumber'].dirty && addStudentForm.controls['documentNumber'].errors?.['pattern']">The "document" field can't have letters</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['documentNumber'].dirty && addStudentForm.controls['documentNumber'].errors?.['minlength'] || addStudentForm.controls['documentNumber'].errors?.['maxlength']">The "document" field must have between 8 and 10 letters</div>
+    </div>
+    <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input formControlName="phoneNumber" type="string" class="form-control" id="phoneNumber" aria-describedby="emailHelp">
+        <div class="valido" *ngIf="addStudentForm.controls['phoneNumber'].dirty && addStudentForm.controls['phoneNumber'].valid"
+        >Valid phone</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['phoneNumber'].dirty && addStudentForm.controls['phoneNumber'].errors?.['required']">The "phone" field can't be empty</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['phoneNumber'].dirty && addStudentForm.controls['phoneNumber'].errors?.['pattern']">The "phone" field can't have letters</div>
+        <div class="invalido" *ngIf="addStudentForm.controls['phoneNumber'].dirty && addStudentForm.controls['phoneNumber'].errors?.['minlength'] || addStudentForm.controls['phoneNumber'].errors?.['maxlength']">The "phone" field must have between 10 and 12 letters</div>
+    </div>
+    <!-- <div class="mb-3">
+        <label for="enrolledCourses" class="form-label">Enrolled courses</label>
+        <select formControlName="enrolledCourses" class="form-control" id="enrolledCourses" aria-describedby="emailHelp"></select>        
+    </div> -->
+    <div class="mb-3 form-check">
+        <input formControlName="isActive" type="checkbox" class="form-check-input" id="isActive">
+        <label class="form-check-label" for="isActive">Is active</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Register student</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+</form>

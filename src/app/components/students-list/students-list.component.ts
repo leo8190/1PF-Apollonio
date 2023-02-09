@@ -15,18 +15,22 @@ export class StudentsListComponent implements OnInit {
   dataSource!: MatTableDataSource<Student>;
   columnas: string[] = ['nameAndSurname', 'email', 'documentNumber', 'phoneNumber', 'actions']
 
-  constructor(private postsService: StudentService, private dialog: MatDialog) {}
+  constructor(private studentService: StudentService, private dialog: MatDialog) {}
 
   ngOnInit() {
-    this.postsService.getStudents().subscribe((students) => {
+    this.studentService.getStudents().subscribe((students) => {
       this.students = students;
       this.dataSource = new MatTableDataSource<Student>(this.students);
     });
   }
 
-  openModal(student: Student){
+  openModal(student: Student) {
     const dialogRef = this.dialog.open(EditStudentDialogComponent, {
       data: student
     });
+  }
+
+  deleteStudent(idStudent: number) {
+    this.studentService.deleteStudent(idStudent);
   }
 }

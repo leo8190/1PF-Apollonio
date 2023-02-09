@@ -2,7 +2,10 @@
 <div mat-dialog-content>
     <form [formGroup]="formulario">
         <div class="row">
-            <input type="text" placeholder="Name and surname" formControlName="nameAndSurname">
+            <input type="text" placeholder="Name" formControlName="name">
+        </div>
+        <div class="row">
+            <input type="text" placeholder="Surname" formControlName="surname">
         </div>
         <div class="row">
             <input type="text" placeholder="Email" formControlName="email">
@@ -16,6 +19,6 @@
     </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-button>Close</button>
-    <button mat-flat-button>Save</button>
+    <button mat-button (click)="closeModal()">Close</button>
+    <button mat-flat-button (click)="saveChanges()">Save</button>
 </div>

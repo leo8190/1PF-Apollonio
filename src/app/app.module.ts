@@ -19,6 +19,9 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { routes } from '../app/app-routing-module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ColumnsHeadersStyle } from './directives/columns-headers-style.directive';
+import { JoinNameAndSurname } from './pipes/join-name-and-surname.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     StudentsListComponent,
     AddStudentComponent,
     EditStudentDialogComponent,
-    DeleteStudentComponent
+    DeleteStudentComponent,
+    ColumnsHeadersStyle,
+    JoinNameAndSurname
   ],
   imports: [
     BrowserModule,
@@ -43,10 +48,12 @@ import { MatDialogModule } from '@angular/material/dialog';
     RouterModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    NgbModule
   ],
   providers: [
-    HttpClient
+    HttpClient,
+    EditStudentDialogComponent
   ],
   bootstrap: [AppComponent]
 })
