@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from '../../services/student.service';
+import { StudentService } from '../../service/student.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { Student } from 'src/app/models/student.model';
+import { Student } from 'src/app/students/model/student.model';
 import { EditStudentDialogComponent } from '../edit-student-dialog/edit-student-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-students-list',
-  templateUrl: './students-list.component.html',
+  templateUrl: './students-list.components.html',
   styleUrls: ['./students-list.component.css']
 })
 export class StudentsListComponent implements OnInit {

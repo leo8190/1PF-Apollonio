@@ -1,4 +1,4 @@
-import { Student } from "./student.model"
+import { Student } from "../../students/model/student.model"
 
 export interface Course {
     id: number,
@@ -6,5 +6,6 @@ export interface Course {
     name: string,
     description: string,    
     isActive: boolean,    
+    duration: string,
     enrolledStudents: Array<Student>
 }

@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { Student } from '../models/student.model';
-import { Subject } from 'rxjs';
-import { EditStudentDialogComponent } from '../components/edit-student-dialog/edit-student-dialog.component';
-import { routes } from '../app-routing-module';
+import { Student } from '../../students/model/student.model';
 
 @Injectable({
   providedIn: 'root'

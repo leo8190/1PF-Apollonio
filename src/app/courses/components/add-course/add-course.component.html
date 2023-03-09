@@ -1,0 +1,26 @@
+<form [formGroup]="addCourseForm" (ngSubmit)="addCourse()" class="was-validated">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input formControlName="name" type="string" class="form-control" id="name">
+        <div class="valido" *ngIf="addCourseForm.controls['name'].dirty && addCourseForm.controls['name'].valid">Campo correcto</div>
+        <div class="invalido" *ngIf="addCourseForm.controls['name'].dirty && addCourseForm.controls['name'].errors?.['required']">The "name" field can't be empty</div>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input formControlName="description" type="string" class="form-control" id="description">
+        <div class="valido" *ngIf="addCourseForm.controls['description'].dirty && addCourseForm.controls['description'].valid">Campo correcto</div>
+        <div class="invalido" *ngIf="addCourseForm.controls['description'].dirty && addCourseForm.controls['description'].errors?.['required']">The "description" field can't be empty</div>
+    </div>
+    <div class="mb-3">
+        <label for="duration" class="form-label">Duration</label>
+        <input formControlName="duration" type="string" class="form-control" id="duration">
+        <div class="valido" *ngIf="addCourseForm.controls['duration'].dirty && addCourseForm.controls['duration'].valid">Campo correcto</div>
+        <div class="invalido" *ngIf="addCourseForm.controls['duration'].dirty && addCourseForm.controls['duration'].errors?.['required']">The "duration" field can't be empty</div>
+    </div>    
+    <div class="mb-3 form-check">
+        <input formControlName="isActive" type="checkbox" class="form-check-input" id="isActive">
+        <label class="form-check-label" for="isActive">Is active</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Add course</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+</form>

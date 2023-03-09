@@ -1,9 +1,10 @@
 <mat-sidenav-container>
     <mat-sidenav mode="side" opened #sidenav style="background-color: rgb(82, 7, 7)">
       <mat-nav-list>  
-        <a routerLink="" mat-list-item>students list (homepage)</a>
+        <a routerLink="" mat-list-item>view students (homepage)</a>
+        <a routerLink="view-courses" mat-list-item>view courses</a>
         <a routerLink="add-student" mat-list-item>add student</a>
-        <!-- <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>   -->
+        <a routerLink="add-course" mat-list-item>add course</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { StudentService } from 'src/app/services/student.service';
+import { StudentService } from 'src/app/students/service/student.service';
 
 @Component({
   selector: 'app-add-student',
@@ -27,7 +27,6 @@ export class AddStudentComponent {
   }
 
   registerStudent(){
-    console.log(this.addStudentForm);
     if(this.addStudentForm.controls['name'].valid && this.addStudentForm.controls['surname'].valid 
         && this.addStudentForm.controls['email'].valid && this.addStudentForm.controls['documentNumber'].valid 
         && this.addStudentForm.controls['phoneNumber'].valid){
