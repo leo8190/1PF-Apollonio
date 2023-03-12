@@ -9,7 +9,7 @@ import { CoursesModule } from './courses/courses.module';
 import { StudentsModule } from './students/students.module';
 import { InscriptionsModule } from './inscriptions/inscriptions.module';
 import { UsersModule } from './users/users.module';
-import { AutenticacionModule } from '../app/authentication/authentication.module'
+import { AuthenticationModule } from '../app/authentication/authentication.module'
 import { AuthenticationComponent } from './authentication/components/authentication/authentication.component';
 import { InitialAuthComponent } from './authentication/components/initial-auth/initial-auth.component';
 
@@ -23,7 +23,7 @@ import { InitialAuthComponent } from './authentication/components/initial-auth/i
     InscriptionsModule,
     UsersModule,
     CoreModule,
-    AutenticacionModule,
+    AuthenticationModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

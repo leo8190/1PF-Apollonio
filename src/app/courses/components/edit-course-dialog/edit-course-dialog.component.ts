@@ -1,10 +1,9 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Course } from 'src/app/courses/model/course.model';
 import { CourseService } from '../../../courses/service/course.service';
 import { Router } from '@angular/router'
-import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-edit-course-dialog',
@@ -13,7 +12,6 @@ import { MatTable } from '@angular/material/table';
 })
 export class EditCourseDialogComponent {
   formulario: FormGroup;
-  // @ViewChild(MatTable) table: MatTable<any>;
 
   constructor(
     private dialogRef: MatDialogRef<EditCourseDialogComponent>,
@@ -35,11 +33,6 @@ export class EditCourseDialogComponent {
 
   saveChanges() {
     this.courseService.saveChanges(this.formulario.getRawValue());
-    // this.courseService.getCourses();
-    // this.router.navigate(['courses/view']); 
-    // this.dialogRef.afterClosed().subscribe(result => {
-    //   this.table.renderRows();
-    // });
   }
 }
 

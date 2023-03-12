@@ -16,7 +16,7 @@ export class EditUserDialogComponent {
   constructor(
     private dialogRef: MatDialogRef<EditUserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: User,
-    private userervice: UserService
+    private userService: UserService
   ) {
     this.userForm = new FormGroup({
       id: new FormControl(data.id),
@@ -31,7 +31,7 @@ export class EditUserDialogComponent {
   }
 
   saveChanges() {
-    this.userervice.saveChanges(this.userForm.getRawValue());
+    this.userService.saveChanges(this.userForm.getRawValue());
   }
 }
 

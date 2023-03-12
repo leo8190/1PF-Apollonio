@@ -4,6 +4,7 @@ import { Student } from 'src/app/students/model/student.model';
 import { EditStudentDialogComponent } from '../edit-student-dialog/edit-student-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentService } from '../../service/student.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-students-list',
@@ -11,7 +12,7 @@ import { StudentService } from '../../service/student.service';
   styleUrls: ['./students-list.component.css']
 })
 export class StudentsListComponent implements OnInit {
-  //export class StudentsListComponent {
+  suscripcion!: Subscription;
   students!: Student[];
   dataSource!: MatTableDataSource<Student>;
   columnas: string[] = ['nameAndSurname', 'email', 'documentNumber', 'phoneNumber', 'actions']
@@ -19,17 +20,16 @@ export class StudentsListComponent implements OnInit {
   constructor(private studentService: StudentService, private dialog: MatDialog, private injector: Injector) { }
 
   ngOnInit() {
+    this.studentService.triggerMethod.subscribe(() => {
+      this.refresh()
+    });
+
     const studentService = this.injector.get(StudentService);
 
     studentService.getStudents().subscribe((students) => {
       this.students = students;
       this.dataSource = new MatTableDataSource<Student>(this.students);
     });
-
-    // this.studentService.getStudents().subscribe((students) => {
-    //   this.students = students;
-    //   this.dataSource = new MatTableDataSource<Student>(this.students);
-    // });
   }
 
   openModal(student: Student) {
@@ -38,10 +38,20 @@ export class StudentsListComponent implements OnInit {
     });
   }
 
+  public refresh() {
+    this.dataSource = new MatTableDataSource<Student>();
+
+    this.suscripcion = this.studentService.getStudents().subscribe((cursos: Student[]) => {
+      this.dataSource.data = cursos;
+    });
+
+    this.dialog.closeAll();
+  }
+
   deleteStudent(idStudent: number) {
     const studentService = this.injector.get(StudentService);
     studentService.deleteStudent(idStudent);
-
-    // this.studentService.deleteStudent(idStudent);
+    alert("Press accept to finish with the delete");
+    this.refresh();
   }
 }

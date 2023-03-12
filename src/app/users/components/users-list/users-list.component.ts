@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../../model/user.model';
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -13,12 +14,17 @@ import { MatDialog } from '@angular/material/dialog';
 export class UsersListComponent {
   Users!: User[];
   dataSource!: MatTableDataSource<User>;
+  suscripcion!: Subscription;
   columns: string[] = ['userName', 'email', 'isAdmin', 'actions']
 
-  constructor(private UserService: UserService, private dialog: MatDialog) { }
+  constructor(private userService: UserService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.UserService.getUsers().subscribe((users) => {
+    this.userService.triggerMethod.subscribe(() => {
+      this.refresh()
+    });
+
+    this.userService.getUsers().subscribe((users) => {
       this.Users = users;
       this.dataSource = new MatTableDataSource<User>(this.Users);
     });
@@ -31,7 +37,19 @@ export class UsersListComponent {
   }
 
   deleteUser(idUser: number) {
-    this.UserService.deleteUser(idUser);
+    this.userService.deleteUser(idUser);
+    alert("Press accept to finish with the delete");
+    this.refresh();
+  }
+
+  public refresh() {
+    this.dataSource = new MatTableDataSource<User>();
+
+    this.suscripcion = this.userService.getUsers().subscribe((cursos: User[]) => {
+      this.dataSource.data = cursos;
+    });
+
+    this.dialog.closeAll();
   }
 }
 

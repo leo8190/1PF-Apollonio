@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Inscription } from 'src/app/inscriptions/model/inscription.model';
 import { EditInscriptionDialogComponent } from '../edit-inscription-dialog/edit-inscription-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-inscriptions-list',
@@ -11,27 +12,50 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./inscriptions-list.component.css']
 })
 export class InscriptionsListComponent {
-  Inscriptions!: Inscription[];
+  inscriptions!: Inscription[];
   dataSource!: MatTableDataSource<Inscription>;
+  suscripcion!: Subscription;
   columns: string[] = ['id', 'studentId', 'courseId', 'actions']
 
-  constructor(private InscriptionService: InscriptionService, private dialog: MatDialog) { }
+  constructor(private inscriptionService: InscriptionService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.InscriptionService.getInscriptions().subscribe((Inscriptions) => {
-      this.Inscriptions = Inscriptions;
-      this.dataSource = new MatTableDataSource<Inscription>(this.Inscriptions);
+    this.inscriptionService.triggerMethod.subscribe(() => {
+      this.refresh()
     });
+
+    this.dataSource = new MatTableDataSource<Inscription>();
+
+    this.suscripcion = this.inscriptionService.getInscriptions().subscribe((inscriptions: Inscription[]) => {
+      this.dataSource.data = inscriptions;
+    });
+
+    // this.inscriptionService.getInscriptions().subscribe((inscriptions) => {
+    //   this.inscriptions = inscriptions;
+    //   this.dataSource = new MatTableDataSource<Inscription>(this.inscriptions);
+    // });
   }
 
   editInscription(Inscription: Inscription) {
-    const dialogRef = this.dialog.open(EditInscriptionDialogComponent, {
+    this.dialog.open(EditInscriptionDialogComponent, {
       data: Inscription
     });
   }
 
   deleteInscription(idInscription: number) {
-    this.InscriptionService.deleteInscription(idInscription);
+    this.inscriptionService.deleteInscription(idInscription);
+    alert("Press accept to finish with the delete");
+    this.refresh();
+  }
+
+  public refresh() {
+    this.dataSource = new MatTableDataSource<Inscription>();
+
+    this.suscripcion = this.inscriptionService.getInscriptions().subscribe((cursos: Inscription[]) => {
+      this.dataSource.data = cursos;
+    });
+
+    this.dialog.closeAll();
   }
 }
 

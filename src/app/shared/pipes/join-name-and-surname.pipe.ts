@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'joinNameAndSurname'
+  name: 'joinNameAndSurname',
+  standalone: true,
 })
 export class JoinNameAndSurname implements PipeTransform {
 
