@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Edit course</h1>
+<div mat-dialog-content>
+    <form [formGroup]="userForm">
+        <div class="row">
+            <input type="text" placeholder="userName" formControlName="userName">
+        </div>
+        <div class="row">
+            <input type="text" placeholder="Email" formControlName="email">
+        </div>
+        <div class="form-check">
+            <input formControlName="isAdmin" type="checkbox" class="form-check-input" id="isAdmin">
+            <label class="form-check-label" for="isActive">Is Admin</label>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeModal()">Close</button>
+    <button mat-flat-button (click)="saveChanges()">Save</button>
+</div>

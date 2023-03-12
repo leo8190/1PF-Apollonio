@@ -1,20 +1,24 @@
 <div>
-    <table mat-table [dataSource]="dataSource">    
+    <h1 class="title">Courses List</h1>
+    <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Name</th>
+            <!-- <td mat-cell *matCellDef="let element">{{ element.name | async}}</td> -->
             <td mat-cell *matCellDef="let element">{{ element.name }}</td>
         </ng-container>
-            
+
         <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Description</th>
+            <!-- <td mat-cell *matCellDef="let element">{{ element.description | async}}</td> -->
             <td mat-cell *matCellDef="let element">{{ element.description }}</td>
-        </ng-container> 
-        
+        </ng-container>
+
         <ng-container matColumnDef="duration">
             <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Duration</th>
+            <!-- <td mat-cell *matCellDef="let element">{{ element.duration | async}}</td> -->
             <td mat-cell *matCellDef="let element">{{ element.duration }}</td>
-        </ng-container> 
-        
+        </ng-container>
+
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Actions</th>
             <td mat-cell *matCellDef="let element">

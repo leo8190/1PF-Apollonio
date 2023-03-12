@@ -1,27 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { StudentService } from '../../service/student.service';
+import { Component, OnInit, Injector } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Student } from 'src/app/students/model/student.model';
 import { EditStudentDialogComponent } from '../edit-student-dialog/edit-student-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { StudentService } from '../../service/student.service';
 
 @Component({
   selector: 'app-students-list',
-  templateUrl: './students-list.components.html',
+  templateUrl: './students-list.component.html',
   styleUrls: ['./students-list.component.css']
 })
 export class StudentsListComponent implements OnInit {
+  //export class StudentsListComponent {
   students!: Student[];
   dataSource!: MatTableDataSource<Student>;
   columnas: string[] = ['nameAndSurname', 'email', 'documentNumber', 'phoneNumber', 'actions']
 
-  constructor(private studentService: StudentService, private dialog: MatDialog) {}
+  constructor(private studentService: StudentService, private dialog: MatDialog, private injector: Injector) { }
 
   ngOnInit() {
-    this.studentService.getStudents().subscribe((students) => {
+    const studentService = this.injector.get(StudentService);
+
+    studentService.getStudents().subscribe((students) => {
       this.students = students;
       this.dataSource = new MatTableDataSource<Student>(this.students);
     });
+
+    // this.studentService.getStudents().subscribe((students) => {
+    //   this.students = students;
+    //   this.dataSource = new MatTableDataSource<Student>(this.students);
+    // });
   }
 
   openModal(student: Student) {
@@ -31,6 +39,9 @@ export class StudentsListComponent implements OnInit {
   }
 
   deleteStudent(idStudent: number) {
-    this.studentService.deleteStudent(idStudent);
+    const studentService = this.injector.get(StudentService);
+    studentService.deleteStudent(idStudent);
+
+    // this.studentService.deleteStudent(idStudent);
   }
 }

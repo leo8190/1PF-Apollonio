@@ -1,0 +1,28 @@
+<form [formGroup]="addInscriptionForm" (ngSubmit)="addInscription()" class="was-validated">
+    <div class="mb-3">
+        <label for="description" class="form-label">Student Id</label>
+        <input formControlName="studentId" type="number" class="form-control" id="studentId">
+        <div class="valido"
+            *ngIf="addInscriptionForm.controls['studentId'].dirty && addInscriptionForm.controls['studentId'].valid">
+            Campo correcto</div>
+        <div class="invalido"
+            *ngIf="addInscriptionForm.controls['studentId'].dirty && addInscriptionForm.controls['studentId'].errors?.['required']">
+            The "studentId" field can't be empty</div>
+    </div>
+    <div class="mb-3">
+        <label for="duration" class="form-label">Course Id</label>
+        <input formControlName="courseId" type="number" class="form-control" id="courseId">
+        <div class="valido"
+            *ngIf="addInscriptionForm.controls['courseId'].dirty && addInscriptionForm.controls['courseId'].valid">Campo
+            correcto</div>
+        <div class="invalido"
+            *ngIf="addInscriptionForm.controls['courseId'].dirty && addInscriptionForm.controls['courseId'].errors?.['required']">
+            The "courseId" field can't be empty</div>
+    </div>
+    <div class="mb-3 form-check">
+        <input formControlName="isActive" type="checkbox" class="form-check-input" id="isActive">
+        <label class="form-check-label" for="isActive">Is active</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Add inscription</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+</form>

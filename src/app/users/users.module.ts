@@ -1,12 +1,27 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { EditUserDialogComponent } from './components/edit-user-dialog/edit-user-dialog.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
+import { UsersRoutingModule } from './users-routing.module';
+import { UserService } from '../users/services/user.service';
+import { MaterialModule } from '../material.module';
+import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AddUserComponent,
+    EditUserDialogComponent,
+    UsersListComponent
+  ],
   imports: [
-    CommonModule
+    MaterialModule,
+    SharedModule,
+    CoreModule,
+    UsersRoutingModule
+  ],
+  providers: [
+    UserService
   ]
 })
 export class UsersModule { }

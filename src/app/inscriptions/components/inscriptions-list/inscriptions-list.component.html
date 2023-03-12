@@ -1,0 +1,39 @@
+<div>
+    <h1 class="title">Inscriptions List</h1>
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Id</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="studentId">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Student Id</th>
+            <td mat-cell *matCellDef="let element">{{ element.studentId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="courseId">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Course Id</th>
+            <td mat-cell *matCellDef="let element">{{ element.courseId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Created At</th>
+            <td mat-cell *matCellDef="let element">{{ element.createdAt }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Actions</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button style="background-color: rgb(82, 7, 7)" (click)="editInscription(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button style="background-color: rgb(82, 7, 7)" (click)="deleteInscription(element.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns"></tr>
+    </table>
+</div>

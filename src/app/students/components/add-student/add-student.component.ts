@@ -14,7 +14,7 @@ export class AddStudentComponent {
   constructor(private studentService: StudentService) {
     let emailRegex: string = '^[a-z]+@[a-z]+\\.[a-z]{2,3}$';
     let onlyNumbersRegex: string = "^[0-9]*$";
-    let onlyLettersAndSpaces: string = "^[a-zA-Z ]+$"; 
+    let onlyLettersAndSpaces: string = "^[a-zA-Z ]+$";
     let controls: any = {
       name: new FormControl("", [Validators.required, Validators.minLength(3), Validators.pattern(onlyLettersAndSpaces)]),
       surname: new FormControl("", [Validators.required, Validators.minLength(3), Validators.pattern(onlyLettersAndSpaces)]),
@@ -26,15 +26,15 @@ export class AddStudentComponent {
     this.addStudentForm = new FormGroup(controls);
   }
 
-  registerStudent(){
-    if(this.addStudentForm.controls['name'].valid && this.addStudentForm.controls['surname'].valid 
-        && this.addStudentForm.controls['email'].valid && this.addStudentForm.controls['documentNumber'].valid 
-        && this.addStudentForm.controls['phoneNumber'].valid){
+  registerStudent() {
+    if (this.addStudentForm.controls['name'].valid && this.addStudentForm.controls['surname'].valid
+      && this.addStudentForm.controls['email'].valid && this.addStudentForm.controls['documentNumber'].valid
+      && this.addStudentForm.controls['phoneNumber'].valid) {
       this.studentService.addStudent(this.addStudentForm.getRawValue());
-      this.addStudentForm.reset();      
-    }   
-    else{
+      this.addStudentForm.reset();
+    }
+    else {
       alert("There are problems with some of the fields");
-    } 
+    }
   }
 }

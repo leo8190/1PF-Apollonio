@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Edit inscription</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form">
+        <div class="row">
+            <label for="id">Id</label>
+            <input readonly type="text" placeholder="id" formControlName="id" id="id">
+        </div>
+        <div class="row">
+            <label for="studentId">Student Id</label>
+            <input type="text" placeholder="studentId" formControlName="studentId">
+        </div>
+        <div class="row">
+            <label for="courseId">Course Id</label>
+            <input type="text" placeholder="courseId" formControlName="courseId">
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeModal()">Close</button>
+    <button mat-flat-button (click)="saveChanges()">Save</button>
+</div>

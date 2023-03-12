@@ -1,15 +1,19 @@
 <mat-sidenav-container>
-    <mat-sidenav mode="side" opened #sidenav style="background-color: rgb(82, 7, 7)">
-      <mat-nav-list>  
-        <a routerLink="" mat-list-item>view students (homepage)</a>
-        <a routerLink="view-courses" mat-list-item>view courses</a>
-        <a routerLink="add-student" mat-list-item>add student</a>
-        <a routerLink="add-course" mat-list-item>add course</a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div style="height: 88vh;">  
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  <mat-sidenav mode="side" opened #sidenav style="background-color: rgb(82, 7, 7)">
+    <mat-nav-list>
+      <a routerLink="students/view" mat-list-item>view students (homepage)</a>
+      <a routerLink="courses/view" mat-list-item>view courses</a>
+      <a routerLink="inscriptions/view" mat-list-item>view inscriptions</a>
+      <a routerLink="users/view" mat-list-item>view users</a>
+      <a routerLink="students/add" mat-list-item>add student</a>
+      <a routerLink="courses/add" mat-list-item>add course</a>
+      <a routerLink="inscriptions/add" mat-list-item>add inscription</a>
+      <a routerLink="users/add" mat-list-item>add user</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

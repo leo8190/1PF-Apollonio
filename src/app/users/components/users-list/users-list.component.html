@@ -1,0 +1,34 @@
+<div>
+    <h1 class="title">Users List</h1>
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="userName">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>User Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Email</th>
+            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="isAdmin">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Is Admin</th>
+            <td mat-cell *matCellDef="let element">{{ element.isAdmin }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Actions</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button style="background-color: rgb(82, 7, 7)" (click)="editUser(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button style="background-color: rgb(82, 7, 7)" (click)="deleteUser(element.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns"></tr>
+    </table>
+</div>

@@ -16,7 +16,7 @@ export class EditStudentDialogComponent {
     private dialogRef: MatDialogRef<EditStudentDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Student,
     private studentService: StudentService
-  ){
+  ) {
     this.formulario = new FormGroup({
       id: new FormControl(data.id),
       createdAt: new FormControl(data.createdAt),
@@ -34,7 +34,7 @@ export class EditStudentDialogComponent {
     this.dialogRef.close();
   }
 
-  saveChanges() { 
+  saveChanges() {
     this.studentService.saveChanges(this.formulario.getRawValue());
   }
 }

@@ -1,0 +1,41 @@
+<form [formGroup]="addUserForm" (ngSubmit)="addUser()" class="was-validated">
+    <div class="mb-3">
+        <label for="userName" class="form-label">User Name</label>
+        <input formControlName="userName" type="string" class="form-control" id="userName">
+        <div class="valido" *ngIf="addUserForm.controls['userName'].dirty && addUserForm.controls['userName'].valid">
+            Campo correcto</div>
+        <div class="invalido"
+            *ngIf="addUserForm.controls['userName'].dirty && addUserForm.controls['userName'].errors?.['required']">
+            The "userName" field can't be empty</div>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input formControlName="email" type="string" class="form-control" id="email">
+        <div class="valido" *ngIf="addUserForm.controls['email'].dirty && addUserForm.controls['email'].valid">
+            Campo
+            correcto</div>
+        <div class="invalido"
+            *ngIf="addUserForm.controls['email'].dirty && addUserForm.controls['email'].errors?.['required']">
+            The "email" field can't be empty</div>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input formControlName="password" type="string" class="form-control" id="password">
+        <div class="valido" *ngIf="addUserForm.controls['password'].dirty && addUserForm.controls['password'].valid">
+            Campo
+            correcto</div>
+        <div class="invalido"
+            *ngIf="addUserForm.controls['password'].dirty && addUserForm.controls['password'].errors?.['required']">
+            The "email" field can't be empty</div>
+    </div>
+    <div class="mb-3 form-check">
+        <input formControlName="isActive" type="checkbox" class="form-check-input" id="isActive">
+        <label class="form-check-label" for="isActive">Is Active</label>
+    </div>
+    <div class="mb-3 form-check">
+        <input formControlName="isAdmin" type="checkbox" class="form-check-input" id="isAdmin">
+        <label class="form-check-label" for="isAdmin">Is Admin</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Add User</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+</form>

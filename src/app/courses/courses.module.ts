@@ -1,24 +1,26 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
 import { EditCourseDialogComponent } from './components/edit-course-dialog/edit-course-dialog.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { CourseService } from './service/course.service';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
-import { MatTableModule } from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon';
-import { AppModule } from '../app.module';
+import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
+import { CoursesRoutingModule } from './courses-routing.module';
 
 @NgModule({
   declarations: [
-    CoursesListComponent      
+    CoursesListComponent,
+    EditCourseDialogComponent,
+    AddCourseComponent
   ],
   imports: [
-    ReactiveFormsModule,
-    MaterialModule      
+    MaterialModule,
+    SharedModule,
+    CoreModule,
+    CoursesRoutingModule
   ],
-  exports:[   
+  exports: [
   ],
   providers: [
     CourseService
