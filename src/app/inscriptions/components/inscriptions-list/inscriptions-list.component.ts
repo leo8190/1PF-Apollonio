@@ -15,7 +15,7 @@ export class InscriptionsListComponent {
   inscriptions!: Inscription[];
   dataSource!: MatTableDataSource<Inscription>;
   suscripcion!: Subscription;
-  columns: string[] = ['id', 'studentId', 'courseId', 'actions']
+  columns: string[] = ['id', 'studentId', 'classId', 'actions']
 
   constructor(private inscriptionService: InscriptionService, private dialog: MatDialog) { }
 

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '../../../users/model/user.model';
 import { AuthenticationService } from '../../service/authentication.service';
 import { UserService } from 'src/app/users/services/user.service';
+import { SesionService } from 'src/app/core/services/sesion.service';
 
 @Component({
   selector: 'app-authentication',
@@ -18,7 +19,7 @@ export class AuthenticationComponent {
   constructor(
     private AuthenticationService: AuthenticationService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {

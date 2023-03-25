@@ -10,14 +10,14 @@
             The "studentId" field can't be empty</div>
     </div>
     <div class="mb-3">
-        <label for="duration" class="form-label">Course Id</label>
-        <input formControlName="courseId" type="number" class="form-control" id="courseId">
+        <label for="duration" class="form-label">Class Id</label>
+        <input formControlName="classId" type="number" class="form-control" id="classId">
         <div class="valido"
-            *ngIf="addInscriptionForm.controls['courseId'].dirty && addInscriptionForm.controls['courseId'].valid">Campo
+            *ngIf="addInscriptionForm.controls['classId'].dirty && addInscriptionForm.controls['classId'].valid">Campo
             correcto</div>
         <div class="invalido"
-            *ngIf="addInscriptionForm.controls['courseId'].dirty && addInscriptionForm.controls['courseId'].errors?.['required']">
-            The "courseId" field can't be empty</div>
+            *ngIf="addInscriptionForm.controls['classId'].dirty && addInscriptionForm.controls['classId'].errors?.['required']">
+            The "classId" field can't be empty</div>
     </div>
     <div class="mb-3 form-check">
         <input formControlName="isActive" type="checkbox" class="form-check-input" id="isActive">

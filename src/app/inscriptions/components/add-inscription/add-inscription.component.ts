@@ -13,7 +13,7 @@ export class AddInscriptionComponent {
   constructor(private InscriptionService: InscriptionService) {
     let controls: any = {
       studentId: new FormControl("", [Validators.required]),
-      courseId: new FormControl('', [Validators.required]),
+      classId: new FormControl('', [Validators.required]),
       isActive: new FormControl(true)
     }
     this.addInscriptionForm = new FormGroup(controls);
@@ -21,7 +21,7 @@ export class AddInscriptionComponent {
 
   addInscription() {
     if (this.addInscriptionForm.controls['studentId'].valid
-      && this.addInscriptionForm.controls['courseId'].valid) {
+      && this.addInscriptionForm.controls['classId'].valid) {
       this.InscriptionService.addInscription(this.addInscriptionForm.getRawValue());
       this.addInscriptionForm.reset();
     }

@@ -20,7 +20,7 @@ export class EditInscriptionDialogComponent {
     this.form = new FormGroup({
       id: new FormControl(data.id),
       studentId: new FormControl(data.studentId),
-      courseId: new FormControl(data.courseId)
+      classId: new FormControl(data.classId)
     });
   }
 

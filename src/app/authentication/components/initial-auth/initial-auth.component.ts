@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Sesion } from 'src/app/core/models/sesion';
+import { SesionService } from 'src/app/core/services/sesion.service';
 
 @Component({
   selector: 'app-initial-auth',
@@ -7,9 +10,18 @@ import { Component } from '@angular/core';
 })
 export class InitialAuthComponent {
 
-  logout() {
-    alert("You are unlogged!");
-    window.location.reload();
-  }
+  constructor(
+    private router: Router,
+    private session: SesionService
+  ) { }
 
+  logout() {
+    let sessionLogout: Sesion = {
+      sesionActiva: false,
+      usuarioActivo: undefined
+    }
+    this.session.logout(sessionLogout);
+    this.router.navigate(['login']);
+    alert("You are unlogged!");
+  }
 }

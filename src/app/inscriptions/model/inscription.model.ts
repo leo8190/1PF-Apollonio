@@ -1,6 +1,6 @@
 export interface Inscription {
     id: number
     studentId: number,
-    courseId: number,
+    classId: number,
     createdAt: Date,
 }

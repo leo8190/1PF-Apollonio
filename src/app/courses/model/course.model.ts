@@ -4,8 +4,7 @@ export interface Course {
     id: number,
     createdAt: Date,
     name: string,
-    description: string,    
-    isActive: boolean,    
-    duration: string,
-    enrolledStudents: Array<Student>
+    description: string,
+    isActive: boolean,
+    duration: string
 }

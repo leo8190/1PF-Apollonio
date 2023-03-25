@@ -12,6 +12,7 @@ import { UsersModule } from './users/users.module';
 import { AuthenticationModule } from '../app/authentication/authentication.module'
 import { AuthenticationComponent } from './authentication/components/authentication/authentication.component';
 import { InitialAuthComponent } from './authentication/components/initial-auth/initial-auth.component';
+import { ClassesModule } from './classes/classes.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { InitialAuthComponent } from './authentication/components/initial-auth/i
     StudentsModule,
     InscriptionsModule,
     UsersModule,
+    ClassesModule,
     CoreModule,
     AuthenticationModule,
     BrowserModule,
