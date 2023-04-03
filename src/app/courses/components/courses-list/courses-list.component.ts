@@ -4,7 +4,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Course } from 'src/app/courses/model/course.model';
 import { EditCourseDialogComponent } from '../edit-course-dialog/edit-course-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { CourseState } from '../../state/course-state.reducer';
+import { Store } from '@ngrx/store';
+import { selectLoadingCourses, selectLoadedCourses } from '../../state/course-state.selectors';
 
 @Component({
   selector: 'app-courses-list',
@@ -13,27 +16,39 @@ import { Subscription } from 'rxjs';
 })
 export class CoursesListComponent implements OnInit {
   dataSource!: MatTableDataSource<Course>;
-  suscripcion!: Subscription;
-  columnas: string[] = ['name', 'description', 'duration', 'actions']
+  suscription!: Subscription;
+  columns: string[] = ['name', 'description', 'duration', 'actions'];
+  loading$!: Observable<Boolean>;
+  courses$!: Observable<Course[]>;
 
-  constructor(private courseService: CourseService, private dialog: MatDialog) { }
+  constructor(private courseService: CourseService, private dialog: MatDialog, private store: Store<CourseState>,) { }
 
   ngOnInit() {
+    this.loading$ = this.store.select(selectLoadingCourses);
+
     this.courseService.triggerMethod.subscribe(() => {
       this.refresh()
     });
 
     this.dataSource = new MatTableDataSource<Course>();
 
-    this.suscripcion = this.courseService.getCourses().subscribe((cursos: Course[]) => {
-      this.dataSource.data = cursos;
+    this.courses$ = this.store.select(selectLoadedCourses);
+
+    let courses = this.courses$.subscribe((courses: Course[]) => {
+      this.dataSource.data = courses;
     });
+
+    this.suscription = courses;
+
+    // this.suscription = this.courseService.getCourses().subscribe((cursos: Course[]) => {
+    //   this.dataSource.data = cursos;
+    // });
   }
 
   public refresh() {
     this.dataSource = new MatTableDataSource<Course>();
 
-    this.suscripcion = this.courseService.getCourses().subscribe((cursos: Course[]) => {
+    this.suscription = this.courseService.getCourses().subscribe((cursos: Course[]) => {
       this.dataSource.data = cursos;
     });
 

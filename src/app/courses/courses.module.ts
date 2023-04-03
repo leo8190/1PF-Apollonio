@@ -7,6 +7,8 @@ import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { CoursesRoutingModule } from './courses-routing.module';
+import { EffectsModule } from '@ngrx/effects';
+import { CoursesEffects } from './state/course-state.effects';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { CoursesRoutingModule } from './courses-routing.module';
     MaterialModule,
     SharedModule,
     CoreModule,
-    CoursesRoutingModule
+    CoursesRoutingModule,
+    EffectsModule.forFeature([CoursesEffects])
   ],
   exports: [
   ],

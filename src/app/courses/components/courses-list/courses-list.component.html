@@ -1,37 +1,44 @@
 <div>
-    <h1 class="title">Courses List</h1>
-    <table mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Name</th>
-            <!-- <td mat-cell *matCellDef="let element">{{ element.name | async}}</td> -->
-            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-        </ng-container>
+    <div class="row" *ngIf="loading$ | async">
+        <div class="col-md-12">
+            <mat-spinner></mat-spinner>
+        </div>
+    </div>
+    <div class="row" *ngIf="!(loading$ | async)">
+        <h1 class="title">Courses List</h1>
+        <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Name</th>
+                <!-- <td mat-cell *matCellDef="let element">{{ element.name | async}}</td> -->
+                <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+            </ng-container>
 
-        <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Description</th>
-            <!-- <td mat-cell *matCellDef="let element">{{ element.description | async}}</td> -->
-            <td mat-cell *matCellDef="let element">{{ element.description }}</td>
-        </ng-container>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Description</th>
+                <!-- <td mat-cell *matCellDef="let element">{{ element.description | async}}</td> -->
+                <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+            </ng-container>
 
-        <ng-container matColumnDef="duration">
-            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Duration</th>
-            <!-- <td mat-cell *matCellDef="let element">{{ element.duration | async}}</td> -->
-            <td mat-cell *matCellDef="let element">{{ element.duration }}</td>
-        </ng-container>
+            <ng-container matColumnDef="duration">
+                <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Duration</th>
+                <!-- <td mat-cell *matCellDef="let element">{{ element.duration | async}}</td> -->
+                <td mat-cell *matCellDef="let element">{{ element.duration }}</td>
+            </ng-container>
 
-        <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Actions</th>
-            <td mat-cell *matCellDef="let element">
-                <button mat-icon-button style="background-color: rgb(82, 7, 7)" (click)="editCourse(element)">
-                    <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button style="background-color: rgb(82, 7, 7)" (click)="deleteCourse(element.id)">
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </td>
-        </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef appColumnsHeadersStyle>Actions</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button style="background-color: rgb(82, 7, 7)" (click)="editCourse(element)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button style="background-color: rgb(82, 7, 7)" (click)="deleteCourse(element.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnas"></tr>
-    </table>
+            <tr mat-header-row *matHeaderRowDef="columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns"></tr>
+        </table>
+    </div>
 </div>

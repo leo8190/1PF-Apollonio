@@ -7,6 +7,8 @@ import { EditStudentDialogComponent } from './components/edit-student-dialog/edi
 import { StudentService } from './service/student.service';
 import { CoreModule } from '../core/core.module';
 import { StudentsRoutingModule } from './students-routing.module';
+import { EffectsModule } from '@ngrx/effects';
+import { StudentEffects } from './state/student.effects';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { StudentsRoutingModule } from './students-routing.module';
     CoreModule,
     SharedModule,
     MaterialModule,
-    StudentsRoutingModule
+    StudentsRoutingModule,
+    EffectsModule.forFeature([StudentEffects])
   ],
   providers: [
     StudentService

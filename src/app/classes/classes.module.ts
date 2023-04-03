@@ -8,6 +8,8 @@ import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { ClassesRoutingModule } from './classes-routing.module';
+import { EffectsModule } from '@ngrx/effects';
+import { ClassEffects } from './state/class.effects';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ClassesRoutingModule } from './classes-routing.module';
     SharedModule,
     CoreModule,
     ClassesRoutingModule,
-    FormsModule
+    FormsModule,
+    EffectsModule.forFeature([ClassEffects])
   ],
   exports: [
   ],

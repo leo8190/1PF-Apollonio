@@ -7,6 +7,8 @@ import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { AddInscriptionComponent } from './components/add-inscription/add-inscription.component';
+import { EffectsModule } from '@ngrx/effects';
+import { InscriptionEffects } from './state/inscription.effects';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { AddInscriptionComponent } from './components/add-inscription/add-inscri
     MaterialModule,
     SharedModule,
     CoreModule,
+    EffectsModule.forFeature([InscriptionEffects]),
   ],
   providers: [
     InscriptionService

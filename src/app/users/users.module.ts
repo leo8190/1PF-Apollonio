@@ -7,6 +7,8 @@ import { UserService } from '../users/services/user.service';
 import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './state/user.effects';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { CoreModule } from '../core/core.module';
     MaterialModule,
     SharedModule,
     CoreModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    EffectsModule.forFeature([UserEffects])
   ],
   providers: [
     UserService
