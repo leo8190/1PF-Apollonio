@@ -8,6 +8,7 @@ import { Observable, Subscription } from 'rxjs';
 import { CourseState } from '../../state/course-state.reducer';
 import { Store } from '@ngrx/store';
 import { selectLoadingCourses, selectLoadedCourses } from '../../state/course-state.selectors';
+import { loadCourseState } from '../../state/course-state.actions';
 
 @Component({
   selector: 'app-courses-list',
@@ -21,9 +22,11 @@ export class CoursesListComponent implements OnInit {
   loading$!: Observable<Boolean>;
   courses$!: Observable<Course[]>;
 
-  constructor(private courseService: CourseService, private dialog: MatDialog, private store: Store<CourseState>,) { }
+  constructor(private courseService: CourseService, private dialog: MatDialog, private store: Store<CourseState>) { }
 
   ngOnInit() {
+    this.store.dispatch(loadCourseState());
+
     this.loading$ = this.store.select(selectLoadingCourses);
 
     this.courseService.triggerMethod.subscribe(() => {
@@ -39,10 +42,6 @@ export class CoursesListComponent implements OnInit {
     });
 
     this.suscription = courses;
-
-    // this.suscription = this.courseService.getCourses().subscribe((cursos: Course[]) => {
-    //   this.dataSource.data = cursos;
-    // });
   }
 
   public refresh() {

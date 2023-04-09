@@ -8,7 +8,9 @@ import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { AddInscriptionComponent } from './components/add-inscription/add-inscription.component';
 import { EffectsModule } from '@ngrx/effects';
-import { InscriptionEffects } from './state/inscription.effects';
+import { InscriptionsEffects } from './state/inscription-state.effects';
+import { inscriptionStateFeatureKey, reducer } from './state/inscription-state.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { InscriptionEffects } from './state/inscription.effects';
     MaterialModule,
     SharedModule,
     CoreModule,
-    EffectsModule.forFeature([InscriptionEffects]),
+    StoreModule.forFeature(inscriptionStateFeatureKey, reducer),
+    EffectsModule.forFeature([InscriptionsEffects]),
   ],
   providers: [
     InscriptionService

@@ -9,6 +9,8 @@ import { CoreModule } from '../core/core.module';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { EffectsModule } from '@ngrx/effects';
 import { CoursesEffects } from './state/course-state.effects';
+import { StoreModule } from '@ngrx/store';
+import { courseStateFeatureKey, reducer } from './state/course-state.reducer';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { CoursesEffects } from './state/course-state.effects';
     SharedModule,
     CoreModule,
     CoursesRoutingModule,
+    StoreModule.forFeature(courseStateFeatureKey, reducer),
     EffectsModule.forFeature([CoursesEffects])
   ],
   exports: [

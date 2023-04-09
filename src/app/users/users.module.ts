@@ -8,7 +8,9 @@ import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { EffectsModule } from '@ngrx/effects';
-import { UserEffects } from './state/user.effects';
+import { UsersEffects } from './state/user-state.effects';
+import { StoreModule } from '@ngrx/store';
+import { userStateFeatureKey, reducer } from './state/user-state.reducer';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { UserEffects } from './state/user.effects';
     SharedModule,
     CoreModule,
     UsersRoutingModule,
-    EffectsModule.forFeature([UserEffects])
+    EffectsModule.forFeature([UsersEffects]),
+    StoreModule.forFeature(userStateFeatureKey, reducer)
   ],
   providers: [
     UserService

@@ -9,7 +9,9 @@ import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { ClassesRoutingModule } from './classes-routing.module';
 import { EffectsModule } from '@ngrx/effects';
-import { ClassEffects } from './state/class.effects';
+import { ClassesEffects } from './state/class-state.effects';
+import { StoreModule } from '@ngrx/store';
+import { classStateFeatureKey, reducer } from './state/class-state.reducer';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ClassEffects } from './state/class.effects';
     CoreModule,
     ClassesRoutingModule,
     FormsModule,
-    EffectsModule.forFeature([ClassEffects])
+    EffectsModule.forFeature([ClassesEffects]),
+    StoreModule.forFeature(classStateFeatureKey, reducer)
   ],
   exports: [
   ],

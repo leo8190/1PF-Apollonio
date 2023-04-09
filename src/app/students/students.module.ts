@@ -8,7 +8,9 @@ import { StudentService } from './service/student.service';
 import { CoreModule } from '../core/core.module';
 import { StudentsRoutingModule } from './students-routing.module';
 import { EffectsModule } from '@ngrx/effects';
-import { StudentEffects } from './state/student.effects';
+import { StudentsEffects } from './state/student-state.effects';
+import { StoreModule } from '@ngrx/store';
+import { studentStateFeatureKey, reducer } from './state/student-state.reducer';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { StudentEffects } from './state/student.effects';
     SharedModule,
     MaterialModule,
     StudentsRoutingModule,
-    EffectsModule.forFeature([StudentEffects])
+    EffectsModule.forFeature([StudentsEffects]),
+    StoreModule.forFeature(studentStateFeatureKey, reducer)
   ],
   providers: [
     StudentService

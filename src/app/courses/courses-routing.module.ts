@@ -4,7 +4,6 @@ import { AddCourseComponent } from './components/add-course/add-course.component
 import { EditCourseDialogComponent } from './components/edit-course-dialog/edit-course-dialog.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
 import { AdminGuard } from '../../app/core/guards/admin.guards';
-import { UserGuard } from '../../app/core/guards/user.guards';
 import { SesionGuard } from '../../app/core/guards/sesion.guards';
 
 const routes: Routes = [

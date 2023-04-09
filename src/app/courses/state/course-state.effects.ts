@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-// import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { concatMap, map } from "rxjs";
@@ -25,7 +24,6 @@ export class CoursesEffects {
       concatMap(({ course }) => {
         return this.courses.addCourse(course).pipe(
           map((course: Course) => {
-            // this.snackBar.open(`${course.name} added correctly`);
             this.router.navigate(['courses/list']);
             return loadCourseState();
           })
